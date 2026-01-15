@@ -1,22 +1,169 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SIMPLI Club</title>
+
   <style>
-    body {
-      background: #0f0f0f;
-      color: white;
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 40px;
+    :root {
+      --bg: #0b0b0f;
+      --card: #13131a;
+      --purple: #8b5cf6;
+      --purple-soft: #a78bfa;
+      --text: #f4f4f5;
+      --muted: #b3b3c6;
     }
-    h1 { font-size: 48px; }
-    p { font-size: 18px; color: #ccc; }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at top, #151528, var(--bg));
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    header {
+      padding: 48px 20px 32px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 3.2rem;
+      letter-spacing: 3px;
+      color: var(--purple);
+    }
+
+    header p {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+
+    .accent-line {
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--purple), var(--purple-soft));
+      margin: 24px auto 0;
+      border-radius: 999px;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+      display: grid;
+      gap: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+
+    .card {
+      background: linear-gradient(180deg, var(--card), #0f0f16);
+      border-radius: 18px;
+      padding: 28px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      border: 1px solid rgba(139,92,246,0.15);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 40px rgba(139,92,246,0.25);
+    }
+
+    .card h2 {
+      color: var(--purple-soft);
+      margin-bottom: 10px;
+      font-size: 1.4rem;
+    }
+
+    .card p {
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+
+    .cta {
+      grid-column: 1 / -1;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .cta a {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 14px 28px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--purple), var(--purple-soft));
+      color: black;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 0 8px 25px rgba(139,92,246,0.4);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .cta a:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 35px rgba(139,92,246,0.6);
+    }
+
+    footer {
+      text-align: center;
+      padding: 24px;
+      color: #777;
+      font-size: 0.85rem;
+    }
   </style>
 </head>
 <body>
-  <h1>SIMPLI</h1>
-  <p>Official Fingerboard Club</p>
-  <p>Clips • Members • Sessions</p>
+
+  <header>
+    <h1>SIMPLI</h1>
+    <p>Fingerboard Club • Clips • Sessions • Progress</p>
+    <div class="accent-line"></div>
+  </header>
+
+  <main>
+    <div class="card">
+      <h2>About SIMPLI</h2>
+      <p>
+        SIMPLI is a fingerboarding club built around creativity, consistency,
+        and progression. We film clips, skate together, and push each other
+        to improve.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>Club Clips</h2>
+      <p>
+        Weekly clips from members — street lines, flatground,
+        and clean edits. Everyone contributes.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>Members</h2>
+      <p>
+        A tight group of riders who care about style, effort,
+        and respect. This page will be private later.
+      </p>
+    </div>
+
+    <div class="cta">
+      <h2 style="color: var(--text);">SIMPLI Club Hub</h2>
+      <p style="color: var(--muted);">More features coming soon</p>
+      <a href="#">Enter</a>
+    </div>
+  </main>
+
+  <footer>
+    © 2026 SIMPLI Club
+  </footer>
+
 </body>
 </html>
