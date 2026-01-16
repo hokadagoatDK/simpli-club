@@ -6,23 +6,32 @@
   <title>SIMPLI Club</title>
   <style>
     :root {
-      --orange: #d95300; /* bolder dark orange highlight */
-      --bg: #ffffff;    /* crisp white background */
+      --orange: #d95300;
+      --bg: #ffffff;
       --text: #111111;
       --muted: #555555;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
-      background: var(--bg);
+      background: url('https://media.istockphoto.com/id/1270667396/photo/pink-fingerboard-on-metal-railing-close-up.jpg?s=612x612&w=0&k=20&c=WTWfoAoJV71ibzUHP5PGWgNEIgUe0Q_o3BlNwM6qQSM=') no-repeat center center fixed;
+      background-size: cover;
       color: var(--text);
       line-height: 1.6;
+    }
+
+    /* Overlay so text is readable */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.85);
+      z-index: -1;
     }
 
     header {
@@ -35,121 +44,47 @@
       box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     }
 
-    .nav {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 1rem 1.25rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
+    .nav { max-width: 1000px; margin: 0 auto; padding: 1rem 1.25rem; display: flex; align-items: center; justify-content: space-between; }
 
-    .logo {
-      font-size: 1.8rem;
-      font-weight: 900;
-      letter-spacing: 0.2em;
-      color: var(--orange);
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-    }
+    .logo { font-size: 1.8rem; font-weight: 900; letter-spacing: 0.2em; color: var(--orange); text-shadow: 1px 1px 2px rgba(0,0,0,0.1); }
 
-    main {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 3rem 1.25rem 6rem;
-    }
+    main { max-width: 1000px; margin: 0 auto; padding: 3rem 1.25rem 6rem; }
 
     .intro {
       margin-top: 2rem;
       padding: 3rem 2.5rem;
       border: 3px solid var(--orange);
       border-radius: 20px;
-      background: #fff9f5;
+      background: rgba(255, 255, 255, 0.95);
       box-shadow: 0 8px 20px rgba(0,0,0,0.05);
       transition: transform 0.3s ease;
     }
 
-    .intro:hover {
-      transform: translateY(-5px);
-    }
+    .intro:hover { transform: translateY(-5px); }
 
-    .intro h1 {
-      font-size: 2.6rem;
-      margin-bottom: 1rem;
-    }
+    .intro h1 { font-size: 2.6rem; margin-bottom: 1rem; }
 
-    .intro h1 span {
-      color: var(--orange);
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
-    }
+    .intro h1 span { color: var(--orange); text-shadow: 1px 1px 3px rgba(0,0,0,0.1); }
 
-    .intro .meta {
-      font-size: 1rem;
-      color: var(--muted);
-      margin-bottom: 1.5rem;
-      font-weight: 600;
-    }
+    .intro .meta { font-size: 1rem; color: var(--muted); margin-bottom: 1.5rem; font-weight: 600; }
 
-    .intro .content {
-      font-size: 1.1rem;
-      color: var(--text);
-    }
+    .intro .content { font-size: 1.1rem; color: var(--text); }
 
-    .placeholder {
-      margin-top: 1rem;
-      padding: 1.25rem;
-      border: 2px dashed var(--orange);
-      border-radius: 12px;
-      color: var(--muted);
-      font-style: italic;
-      background: rgba(217, 83, 0, 0.05);
-    }
+    .placeholder { margin-top: 1rem; padding: 1.25rem; border: 2px dashed var(--orange); border-radius: 12px; color: var(--muted); font-style: italic; background: rgba(217, 83, 0, 0.05); }
 
-    .scroll-hint {
-      margin-top: 3rem;
-      text-align: center;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
+    .scroll-hint { margin-top: 3rem; text-align: center; color: var(--muted); font-size: 0.95rem; }
 
-    .scroll-hint span {
-      display: inline-block;
-      margin-top: 0.5rem;
-      color: var(--orange);
-      font-weight: 700;
-      font-size: 1.2rem;
-      animation: bounce 1s infinite alternate;
-    }
+    .scroll-hint span { display: inline-block; margin-top: 0.5rem; color: var(--orange); font-weight: 700; font-size: 1.2rem; animation: bounce 1s infinite alternate; }
 
-    @keyframes bounce {
-      0% { transform: translateY(0); }
-      100% { transform: translateY(8px); }
-    }
+    @keyframes bounce { 0% { transform: translateY(0); } 100% { transform: translateY(8px); } }
 
-    section {
-      margin-top: 6rem;
-    }
+    section { margin-top: 6rem; }
 
-    section h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: var(--orange);
-      font-weight: 700;
-    }
+    section h2 { font-size: 2rem; margin-bottom: 1rem; color: var(--orange); font-weight: 700; }
 
-    section p {
-      max-width: 700px;
-      color: var(--muted);
-      font-size: 1rem;
-    }
+    section p { max-width: 700px; color: var(--muted); font-size: 1rem; }
 
-    footer {
-      margin-top: 6rem;
-      padding-top: 2rem;
-      border-top: 2px solid var(--orange);
-      text-align: center;
-      font-size: 0.9rem;
-      color: var(--muted);
-    }
+    footer { margin-top: 6rem; padding-top: 2rem; border-top: 2px solid var(--orange); text-align: center; font-size: 0.9rem; color: var(--muted); }
   </style>
 </head>
 <body>
