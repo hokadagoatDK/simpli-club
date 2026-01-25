@@ -3,125 +3,167 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SIMPLI Club</title>
+  <title>SIMPLI</title>
   <style>
     :root {
-      --orange: #d95300;
-      --bg: #ffffff;
-      --text: #111111;
-      --muted: #555555;
+      --bg: #000000;
+      --neon: #00b3ff;
+      --text: #e6f6ff;
+      --muted: #7aa7c7;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * { box-sizing: border-box; }
 
     body {
-      font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
-      background: url('https://media.istockphoto.com/id/1270667396/photo/pink-fingerboard-on-metal-railing-close-up.jpg?s=612x612&w=0&k=20&c=WTWfoAoJV71ibzUHP5PGWgNEIgUe0Q_o3BlNwM6qQSM=') no-repeat center center fixed;
-      background-size: cover;
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
       color: var(--text);
-      line-height: 1.6;
     }
 
-    /* Overlay so text is readable */
-    body::before {
-      content: '';
+    /* Top Bar */
+    header {
       position: fixed;
       top: 0;
       left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(255, 255, 255, 0.85);
-      z-index: -1;
+      right: 0;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      background: rgba(0,0,0,0.9);
+      border-bottom: 1px solid rgba(0,179,255,0.25);
+      z-index: 1000;
     }
 
-    header {
-      position: sticky;
-      top: 0;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(6px);
-      border-bottom: 2px solid var(--orange);
-      z-index: 10;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    .logo {
+      font-weight: 900;
+      font-size: 24px;
+      letter-spacing: 3px;
+      color: var(--neon);
     }
 
-    .nav { max-width: 1000px; margin: 0 auto; padding: 1rem 1.25rem; display: flex; align-items: center; justify-content: space-between; }
-
-    .logo { font-size: 1.8rem; font-weight: 900; letter-spacing: 0.2em; color: var(--orange); text-shadow: 1px 1px 2px rgba(0,0,0,0.1); }
-
-    main { max-width: 1000px; margin: 0 auto; padding: 3rem 1.25rem 6rem; }
-
-    .intro {
-      margin-top: 2rem;
-      padding: 3rem 2.5rem;
-      border: 3px solid var(--orange);
-      border-radius: 20px;
-      background: rgba(255, 255, 255, 0.95);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-      transition: transform 0.3s ease;
+    nav {
+      display: flex;
+      gap: 20px;
     }
 
-    .intro:hover { transform: translateY(-5px); }
+    nav button {
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 14px;
+      letter-spacing: 1px;
+      cursor: pointer;
+      opacity: 0.8;
+    }
 
-    .intro h1 { font-size: 2.6rem; margin-bottom: 1rem; }
+    nav button:hover {
+      opacity: 1;
+      color: var(--neon);
+    }
 
-    .intro h1 span { color: var(--orange); text-shadow: 1px 1px 3px rgba(0,0,0,0.1); }
+    nav button.disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
 
-    .intro .meta { font-size: 1rem; color: var(--muted); margin-bottom: 1.5rem; font-weight: 600; }
+    /* Sections */
+    main {
+      padding-top: 64px;
+    }
 
-    .intro .content { font-size: 1.1rem; color: var(--text); }
+    section {
+      min-height: calc(100vh - 64px);
+      display: none;
+      padding: 80px 24px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
 
-    .placeholder { margin-top: 1rem; padding: 1.25rem; border: 2px dashed var(--orange); border-radius: 12px; color: var(--muted); font-style: italic; background: rgba(217, 83, 0, 0.05); }
+    section.active {
+      display: block;
+    }
 
-    .scroll-hint { margin-top: 3rem; text-align: center; color: var(--muted); font-size: 0.95rem; }
+    h1 {
+      font-size: 48px;
+      margin-bottom: 16px;
+      color: var(--neon);
+    }
 
-    .scroll-hint span { display: inline-block; margin-top: 0.5rem; color: var(--orange); font-weight: 700; font-size: 1.2rem; animation: bounce 1s infinite alternate; }
+    p {
+      max-width: 600px;
+      line-height: 1.6;
+      color: var(--muted);
+    }
 
-    @keyframes bounce { 0% { transform: translateY(0); } 100% { transform: translateY(8px); } }
+    .divider {
+      margin: 40px 0;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--neon), transparent);
+      opacity: 0.4;
+    }
 
-    section { margin-top: 6rem; }
-
-    section h2 { font-size: 2rem; margin-bottom: 1rem; color: var(--orange); font-weight: 700; }
-
-    section p { max-width: 700px; color: var(--muted); font-size: 1rem; }
-
-    footer { margin-top: 6rem; padding-top: 2rem; border-top: 2px solid var(--orange); text-align: center; font-size: 0.9rem; color: var(--muted); }
+    footer {
+      text-align: center;
+      padding: 24px;
+      font-size: 12px;
+      color: var(--muted);
+      opacity: 0.6;
+    }
   </style>
 </head>
 <body>
   <header>
-    <div class="nav">
-      <div class="logo">SIMPLI</div>
-    </div>
+    <div class="logo">SIMPLI</div>
+    <nav>
+      <button onclick="showSection('home')">HOME</button>
+      <button class="disabled">SETUPS</button>
+      <button class="disabled">MEMBERS</button>
+    </nav>
   </header>
 
   <main>
-    <div class="intro">
-      <h1>Welcome to <span>SIMPLI</span></h1>
-      <div class="meta">Club Blog · Updates · Clips · Ideas</div>
-      <div class="content">
-        <div class="placeholder">
-          New Fingerboard drop coming out!
-
-          Raffle on 1/26/2026, prize: Pro SpitBoards Deck
-        </div>
-      </div>
-    </div>
-
-    <div class="scroll-hint">
-      Scroll to explore
-      <div><span>↓</span></div>
-    </div>
-
-    <section>
-      <h2>More coming soon</h2>
+    <!-- HOME -->
+    <section id="home" class="active">
+      <h1>SIMPLI</h1>
       <p>
-        This website is a work in progress. If you have ideas of anything we could add, feel free to let me know!
+        SIMPLI is an online fingerboard community built from YouTube —
+        focused on creativity, progression, and clean style.
+      </p>
+      <div class="divider"></div>
+      <p>
+        Want to be part of SIMPLI? Member features, setups, and challenges
+        are coming soon.
       </p>
     </section>
 
-    <footer>
-      © SIMPLI Club
-    </footer>
+    <!-- SETUPS (placeholder) -->
+    <section id="setups">
+      <h1>Setups</h1>
+      <p>Coming soon.</p>
+    </section>
+
+    <!-- MEMBERS (placeholder) -->
+    <section id="members">
+      <h1>Members</h1>
+      <p>Coming soon.</p>
+    </section>
   </main>
+
+  <footer>
+    © SIMPLI
+  </footer>
+
+  <script>
+    function showSection(id) {
+      document.querySelectorAll('section').forEach(sec => {
+        sec.classList.remove('active');
+      });
+      const target = document.getElementById(id);
+      if (target) target.classList.add('active');
+    }
+  </script>
 </body>
 </html>
